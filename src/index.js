@@ -1,10 +1,18 @@
+// const element = document.createElement('h1');
+// element.innerText = 'Hola, Platzi Badges!';
+
+// const container = document.getElementById('app');
+
+// container.appendChild(element);
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
 
-import './global.css';
-import App from './components/App';
+
+//ESTO ES JSX -- SIEMPRE DEBE ESTAR IMPORTADO REACT
+const element = <h1>Hola, ¡Platzi Badges from React!</h1>
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<App />, container);
+ReactDOM.render(element, container);
+
