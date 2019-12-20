@@ -5,6 +5,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Badge from './components/Badge';
+
 //ESTO ES JSX -- SIEMPRE DEBE ESTAR IMPORTADO REACT
 // const element = <h1>Hola, ¡Platzi Badges from React!</h1>;
 
@@ -24,4 +26,4 @@ const jsx = (
 
 const container = document.getElementById("app");
 
-ReactDOM.render(jsx, container);
+ReactDOM.render(<Badge/>, container);
