@@ -8,7 +8,8 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 
-import Badge from "./components/Badge";
+// import Badge from "./components/Badge";
+import BadgeNew from "./pages/BadgeNew";
 
 //ESTO ES JSX -- SIEMPRE DEBE ESTAR IMPORTADO REACT
 // const element = <h1>Hola, ¡Platzi Badges from React!</h1>;
@@ -16,17 +17,17 @@ import Badge from "./components/Badge";
 // const element = document.createElement('h1');
 // element.innerText = 'Hola, Platzi Badges!';
 
-var nombre = "elkin";
+// var nombre = "elkin";
 
 // const element = React.createElement("h1", {}, `Hola, soy el hijo de ${nombre}`);
 
-const jsx = (
-  <div>
-    <h1>Hola, soy {nombre}</h1>
-    <h5>Y estudio en Platzi!</h5>
-  </div>
-);
+// const jsx = (
+//   <div>
+//     <h1>Hola, soy {nombre}</h1>
+//     <h5>Y estudio en Platzi!</h5>
+//   </div>
+// );
 
 const container = document.getElementById("app");
 
-ReactDOM.render(<Badge firstname="ELkin" lastname="Jimenez" />, container);
+ReactDOM.render(<BadgeNew />, container);
