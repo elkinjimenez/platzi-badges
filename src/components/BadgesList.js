@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Gravatar from "./Gravatar";
 
 class BadgesList extends React.Component {
   render() {
@@ -21,9 +22,9 @@ class BadgesList extends React.Component {
             <li className="card my-3 p-3" key={badge.id}>
               <div className="row">
                 <div className="col-2">
-                  <img
+                  <Gravatar
                     className="rounded-circle img-fluid"
-                    src={badge.avatarUrl}
+                    email={badge.email}
                     alt="Avatar de usuario"
                   />
                 </div>

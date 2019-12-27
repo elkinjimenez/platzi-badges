@@ -9,10 +9,10 @@ import api from "../api";
 class BadgeNew extends React.Component {
   state = {
     form: {
-      primerNombre: "",
-      apellido: "",
+      firstName: "",
+      lastName: "",
       email: "",
-      trabajo: "",
+      jobTitle: "",
       twitter: ""
     }
   };
@@ -26,8 +26,8 @@ class BadgeNew extends React.Component {
     });
   };
 
-  onSubmit = async e => {
-    e.preventSubmit();
+  handelSubmit = async e => {
+    e.preventDefault();
     this.setState({ loading: true, error: null });
 
     try {
@@ -52,17 +52,17 @@ class BadgeNew extends React.Component {
           <div className="row">
             <div className="col">
               <Badge
-                firstname={this.state.form.primerNombre || "Nombre"}
-                lastname={this.state.form.apellido || "Apellido"}
+                firstname={this.state.form.firstName || "Nombre"}
+                lastname={this.state.form.lastName || "lastName"}
                 email={this.state.form.email || "Correo"}
-                trabajo={this.state.form.trabajo || "Tu trabajo"}
+                jobTitle={this.state.form.jobTitle || "Tu jobTitle"}
                 twitter={this.state.form.twitter || "Twitter"}
               />
             </div>
             <div className="col">
               <BadgeForm
                 onChange={this.handleChange}
-                onSubmit={this.onSubmit}
+                onSubmit={this.handelSubmit}
                 formValues={this.state.form}
               />
             </div>

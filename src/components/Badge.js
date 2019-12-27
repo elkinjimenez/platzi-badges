@@ -19,7 +19,7 @@ class Badge extends React.Component {
           <Gravatar
             className="Badge__avatar"
             email={this.props.email}
-            alt="Avatar de {firstname}"
+            alt="Avatar"
           />
           <h1>
             {this.props.firstname} <br /> {this.props.lastname}
