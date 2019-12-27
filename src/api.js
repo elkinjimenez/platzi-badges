@@ -26,9 +26,9 @@ const api = {
     list() {
       //   return [];
 
-        // return callApi("/badges");
+        return callApi("/badges");
 
-      throw new Error("Error inesperado");
+      // throw new Error("Error inesperado");
     },
     create(badge) {
       return callApi(`/badges`, {
