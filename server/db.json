@@ -444,10 +444,13 @@
     {
       "primerNombre": "elkin",
       "apellido": "jimenez",
-      "email": "elomjiga@hotmail.com",
+      "email": "omar@hotmail.com",
       "trabajo": "Desarrollador full stack",
       "twitter": "elomjiga",
-      "id": "hqer6rY"
+      "id": "hqer6rY",
+      "firstName": "omar",
+      "lastName": "garcia",
+      "jobTitle": "desarollador freelance"
     },
     {
       "primerNombre": "elkin",
