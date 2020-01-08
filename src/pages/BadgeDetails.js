@@ -1,19 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import './styles/BadgeDetails.css';
 import confLogo from "../images/platziconf-logo.svg";
 import PageLoading from "../components/PageLoading";
 import PageError from "../components/PageError";
 import Badge from "../components/Badge";
+import DeleteBadgeModal from '../components/DeleteBadgeModal';
 import api from '../api';
 import { Link } from 'react-router-dom';
+
 
 class BadgeDetails extends React.Component {
     state = {
         loading: true,
         error: null,
         data: undefined,
+        ModalIsOpen: false,
     }
 
     componentDidMount() {
@@ -37,7 +39,32 @@ class BadgeDetails extends React.Component {
         }
     }
 
+    onCloseModal = e => {
+        this.setState({ ModalIsOpen: false })
+    }
+    onOpenModal = e => {
+        this.setState({ ModalIsOpen: true })
+    }
 
+    onDeleteBadge = async () => {
+
+        this.setState({ loading: true, error: null })
+
+        try {
+            await api.badges.remove(
+                this.props.match.params.badgeId
+            )
+
+            this.setState({ loading: false })
+
+            this.props.history.push('/badges')
+
+        } catch (error) {
+
+            this.setState({ loading: false, error: error })
+
+        }
+    }
 
     render() {
 
@@ -72,8 +99,8 @@ class BadgeDetails extends React.Component {
                             <h2>Acciones</h2>
                             <div>
                                 <Link className="btn btn-primary" to={`/badges/${this.state.data.id}/edit`}>Editar</Link>
-                                <button className="mx-3 btn btn-danger">Eliminar</button>
-                                {ReactDOM.createPortal(<h1>Hola</h1>, document.getElementById('modal'))}
+                                <button onClick={this.onOpenModal} className="mx-3 btn btn-danger">Eliminar</button>
+                                <DeleteBadgeModal onDeleteBadge={this.onDeleteBadge} onClose={this.onCloseModal} isOpen={this.state.ModalIsOpen} />
                             </div>
                         </div>
                     </div>
