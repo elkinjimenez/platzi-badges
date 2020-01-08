@@ -2,22 +2,43 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Gravatar from "./Gravatar";
 
-class BadgesList extends React.Component {
-  render() {
-    if (this.props.badges.length === 0) {
-      return (
-        <div className="text-center">
-          <h3>No se encontró ningún Badge</h3>
-          <Link to="/badges/new" className="btn btn-primary">
-            Crea nuevo badge
-          </Link>
-        </div>
-      );
-    }
+function BadgesList(props) {
 
+  const badges = props.badges;
+
+  const [query, setQuery] = React.useState('');
+
+  const filteredBadges = badges.filter(badge => {
+    return `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query.toLowerCase());
+  })
+
+  if (filteredBadges.length === 0) {
     return (
+      <div className="text-center">
+        <div className="form-group">
+          <label>Filter badges</label>
+          <input type="text" value={query} onChange={(e) => {
+            setQuery(e.target.value)
+          }} className="form-control" />
+        </div>
+        <h3>No se encontró ningún Badge</h3>
+        <Link to="/badges/new" className="btn btn-primary">
+          Crea nuevo badge
+          </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="form-group">
+        <label>Filter badges</label>
+        <input type="text" value={query} onChange={(e) => {
+          setQuery(e.target.value)
+        }} className="form-control" />
+      </div>
       <ul className="list-unstyled">
-        {this.props.badges.map(badge => {
+        {filteredBadges.map(badge => {
           return (
             <li className="card my-3 p-3" key={badge.id}>
               <Link
@@ -45,7 +66,8 @@ class BadgesList extends React.Component {
           );
         })}
       </ul>
-    );
-  }
+    </div>
+  );
 }
+
 export default BadgesList;
