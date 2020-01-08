@@ -2,15 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Gravatar from "./Gravatar";
 
+
+function useSearchBadges(badges) {
+
+  const [query, setQuery] = React.useState('');
+
+  const [filteredBadges, setFilteredResults] = React.useState(badges)
+
+  React.useMemo(
+    () => {
+      const result = badges.filter(badge => {
+        return `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query.toLowerCase());
+      });
+
+      setFilteredResults(result);
+    }, [badges, query]);
+
+  return { query, setQuery, filteredBadges }
+
+}
+
 function BadgesList(props) {
 
   const badges = props.badges;
 
-  const [query, setQuery] = React.useState('');
-
-  const filteredBadges = badges.filter(badge => {
-    return `${badge.firstName} ${badge.lastName}`.toLowerCase().includes(query.toLowerCase());
-  })
+  const { query, setQuery, filteredBadges } = useSearchBadges(badges)
 
   if (filteredBadges.length === 0) {
     return (
