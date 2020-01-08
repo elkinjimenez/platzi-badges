@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './styles/BadgeDetails.css';
 import confLogo from "../images/platziconf-logo.svg";
@@ -6,6 +7,7 @@ import PageLoading from "../components/PageLoading";
 import PageError from "../components/PageError";
 import Badge from "../components/Badge";
 import api from '../api';
+import { Link } from 'react-router-dom';
 
 class BadgeDetails extends React.Component {
     state = {
@@ -66,7 +68,14 @@ class BadgeDetails extends React.Component {
                         <div className="col">
                             <Badge firstname={this.state.data.firstName} lastname={this.state.data.lastName} email={this.state.data.email} twitter={this.state.data.twitter} jobTitle={this.state.data.jobTitle} />
                         </div>
-                        <div className="col"></div>
+                        <div className="col">
+                            <h2>Acciones</h2>
+                            <div>
+                                <Link className="btn btn-primary" to={`/badges/${this.state.data.id}/edit`}>Editar</Link>
+                                <button className="mx-3 btn btn-danger">Eliminar</button>
+                                {ReactDOM.createPortal(<h1>Hola</h1>, document.getElementById('modal'))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
